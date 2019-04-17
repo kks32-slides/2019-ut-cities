@@ -1,0 +1,402 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>City-scale simulations and visualization</title>
+
+      <link rel="stylesheet" href="css/reveal.css">
+      <link rel="stylesheet" href="css/theme/burntorange.css">
+      <!-- Theme used for syntax highlighting of code -->
+      <link rel="stylesheet" href="lib/css/zenburn.css">
+      <!-- Printing and PDF exports -->
+      <script>
+         var link = document.createElement('link');
+         link.rel = 'stylesheet';
+         link.type = 'text/css';
+         link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+         document.getElementsByTagName('head')[0].appendChild(link);
+      </script>
+      <!-- MathJax -->
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+      </script>
+      <!-- Script for Video play back on Slide for multiple videos-->
+      <script src = "js/video.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- Section -->
+        <section data-background="images/themes/ut.jpg" data-background-size="100%">
+          <h1>City-scale simulations and visualization</h1>
+          <br/>
+          <img style="border:0;" src="images/themes/ut.png" width="40%">
+          <h2 style = "color: #ffffff">
+            Krishna Kumar, <a style = "color: #ffffff" href="mailto:krishnak@utexas.edu">krishnak@utexas.edu</a>
+          </h2>
+          <br/><br/>
+          <h4>UT Austin. 19 April 2019</h4>
+        </section>
+
+        <!-- Data analytics -->
+        <section>
+          <section>
+            <h2>Smart city</h2>
+            <img src="images/smart-city.png" width="100%">
+          </section>
+
+          <section>
+            <h3>Smart (monitoring complex) infrastructure</h3>
+            <img src="images/complex-infrastructure.png" width="100%">
+          </section>
+
+          <!-- Querries -->
+          <section>
+            <h3>Queries with increasing level of complexity</h3>
+            <p>
+              <ul>
+                <li>At London Bridge Arch E951 area, has there been a black alarm triggered during the piles construction on dd/mm/yy hh:mm:ss?</li>
+                <li>Is there a crack opening greater than 5mm in the arches, when the settlement values reached 50mm?</li>
+                <li>What is the maximum displacement observed during tunneling (or other construction activity) within x meters from the pile.</li>
+                <li>Number of data readings required for a strain profile – within a tolerance of X?</li>
+                <li>Effect of analyzer X on scatter / noise in soil layer Y</li>
+              </ul>
+            </p>
+          </section>
+
+          <section>
+            <h3>Queries: Big, Fast and Rich</h3>
+            <img style="border:0;" src="images/queries.png" width="50%">
+          </section>
+
+          <!-- Relational DB -->
+          <section>
+            <h3>Relational database</h3>
+            <img style="border:0;" src="images/rdbms.png" width="100%">
+            <p>Humidity? Vibration? 3D point cloud data? …</p>
+          </section>
+          <section>
+            <h3>PostGIS</h3>
+            <ul>
+              <li><strong>Geographic objects</strong> to the PostgreSQL object-relational database</li>
+              <li><strong>Geometry types</strong> for Points, LineStrings, Polygons, MultiPoints, MultiLineStrings, MultipPolygons and GeometryCollections.</li>
+              <li>Spatial operators for determining <strong>geospatial measurements</strong> like area, distance, length and perimeter.</li>
+              <li>Spatial operators for determining <strong>geospatial set operations</strong>, like union, difference, symmetric difference and buffers (provided by GEOS).</li>
+            </ul>
+            <pre class="prettyprint">v.to.db map=roads option=length type=line col=linelength units=me</pre>
+          </section>
+
+          <!-- Spatio Temporal Query -->
+          <section>
+            <h3>Spatio-Temporal Query</h3>
+            <div style="float: left; width: 70%">
+              <ul>
+                <li>Semantic analytics tools have primarily focused on thematic relationships, but spatial and temporal relationships are often critical components in analytical domains.</li>
+                <li>Current GIS and spatial database technology does not support complex thematic analytics operations.</li>
+                <ul>
+                  <li>GIS - modelling and analysing spatial and temporal relationships</li>
+                  <li>Thematic entities and their relationships are not explicitly and independently represented, making analysis of these relationships difficult.</li>
+                </ul>
+              </ul>
+            </div>
+            <div style="float: right; width: 25%">
+              <img style="border:0;" src="images/spatio-temporal.png" width="100%">
+            </div>
+          </section>
+
+          <section>
+            <h3>CityGML</h3>
+            <ul>
+              <li>Open data model and an XML-based format for the storage and exchange of data.</li>
+              <li>Common information model for the representation of sets of 3D urban objects</li>
+            </ul>
+            <img style="border:0;" src="images/citygml.png" width="70%">
+          </section>
+
+          <section>
+            <h3>CityGML</h3>
+            <img style="border:0;" src="images/cityxml.png" width="70%">
+          </section>
+
+          <section>
+            <h3>Building Information Modelling</h3>
+            <img src="images/bim.png" width="80%">
+          </section>
+
+          <section>
+            <h3>Industry Foundation Class</h3>
+            <img style="border:0;" src="images/ifc.png" width="70%">
+          </section>
+
+          <!-- Smart cities standard -->
+          <section>
+            <h3>Smart cities standard</h3>
+            <ul>
+              <li>Smart cities standard (PAS 182) offers a handful of generic concepts (such as place, observation, metric etc.) to formulate a common language for linking data across organizations in a city.</li>
+              <li>The main goal is to seamlessly integrate information from multiple organisations using <strong>Linked Data (Semantic Web technology)</strong> that can be shared and edited.</li>
+              <li>Different from BIM, Smart Cities allow for the sharing of critical but less tangible aspects that relate to the data: such as related Assumptions and Objectives.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Linked Data - Semantic Web</h3>
+            <img src="images/linked-data.png" width="80%">
+          </section>
+
+          <section>
+            <h3>Linked Data - example</h3>
+            <img src="images/bristol-airpollution.png" width="80%">
+          </section>
+
+          <section>
+            <h3>Linked Data - Concept model</h3>
+            <img src="images/lbs-concept.png" width="80%">
+          </section>
+
+          <section>
+            <h3>Linked Data - Time Slices</h3>
+            <img src="images/linked-data-timeslices.png" width="80%">
+          </section>
+
+          <section>
+            <h3>Temporal RDF</h3>
+            <img src="images/temporal-rdf.png" width="80%">
+            <p>Temporal RDF extends the RDF statement from a triple to a quad where the fourth element is the valid time of the RDF statement</p>
+          </section>
+
+          <!-- Graph Processing -->
+          <section>
+            <h3>Graph processing</h3>
+            <img src="images/graph-processing.png" width="80%">
+          </section>
+          <section>
+            <h3>Graph optimisation</h3>
+            <img src="images/graph-optimisation.png" width="50%">
+          </section>
+        </section>
+
+        <!-- Big data - City scale modelling -->
+        <section>
+          <section data-background="images/london-abm.png" data-background-size="80%">
+            <h2 style="color: white;">Big Data - City scale modelling</h2>
+            <h4 style="color: white;">Gerry Casey, Bing Yu, Kenichi Soga, Peter Guthrie, Elisabete Silva, Krishna Kumar and Mietek Bak</h4>
+          </section>
+
+          <section>
+            <h3>SQL v NoSQL - Google directions API</h3>
+            <img src="images/sql-nosql.png" width="80%">
+          </section>
+
+          <!-- Journey time -->
+          <section>
+            <h3>London journey times</h3>
+            <div style="float: left; width: 47%">
+              <img src="images/london-atc.png" width="80%">
+            </div>
+            <div style="float: right; width: 47%">
+              <img src="images/london-google-traffic.png" width="80%">
+            </div>
+          </section>
+
+          <section>
+            <h3>London journey times</h3>
+            <img src="images/london-journeys.png" width="80%">
+          </section>
+
+          <section>
+            <h3>London journey times</h3>
+            <img src="images/london-journeytimes.png" width="80%">
+          </section>
+
+          <section>
+            <h3>Traffic saturation curves</h3>
+            <div style="float: left; width: 47%">
+              <img src="images/A66-saturation-curves.png" width="100%">
+            </div>
+            <div style="float: right; width: 47%">
+              <img src="images/A66.png" width="80%">
+            </div>
+          </section>
+
+          <!-- MapReduce v Inmemory -->
+          <section>
+            <h3>MapReduce v In-memory</h3>
+            <div style="float: left; width: 47%">
+              <h4>MapReduce</h4>
+              <ul>
+                <li>Batch processing</li>
+                <li>Larger set of data to extract features and correlations</li>
+              </ul>
+              <img src="images/map-reduce.png" width="80%">
+            </div>
+            <div style="float: right; width: 47%">
+              <h4>In-memory</h4>
+              <ul>
+                <li>Real-time predictions</li>
+                <li><strong>GraphX</strong>: Graph parallel computing</li>
+              </ul>
+              <img src="images/spark.png" width="80%">
+            </div>
+          </section>
+
+          <section>
+            <h3>Agent based modelling (ABM)</h3>
+            <h4>Graph data structure</h4>
+            <img src="images/graph-data-abm.png" width="100%">
+          </section>
+
+          <section>
+            <h3>ABM time step</h3>
+            <img src="images/graph-data-abm-timestep.png" width="100%">
+          </section>
+
+          <section>
+            <h3>Spatial v Temporal complexity</h3>
+            <div style="float: left; width: 47%">
+              <h4>Spatial</h4>
+              <img src="images/spatial-complexity.png" width="80%">
+            </div>
+            <div style="float: right; width: 47%">
+              <h4>Temporal</h4>
+              <img src="images/temporal-complexity.png" width="80%">
+            </div>
+          </section>
+
+          <section>
+            <h3>ABM Architecture</h3>
+            <img src="images/abm-architecture.png" width="70%">
+            <ul>
+              <li>Decentralised data structures</li>
+              <li>Graph size: ~250k nodes and ~800k edges</li>
+              <li>~1.5 GB (.gml) to 43 MB (.json.gz)</li>
+            </ul>
+          </section>
+          
+          <section>
+            <h3>Dynamic computations</h3>
+            <div style="float: left; width: 60%">
+              <img src="images/dynamic-computations.png" width="100%">
+            </div>
+            <div style="float: right; width: 40%">
+              <ul>
+                <li>Shortest path at time <i>'t'</i></li>
+                <li>Shortest path considering emissions</li>
+                <li>Shortest path re-computation in response to an event</li>
+                <li>1 million agents in ~ 1 hour</li>
+              </ul>
+            </div>
+          </section>
+          
+          <section>
+            <h3>Agent based modelling (ABM)</h3>
+            <img src="images/abm-traffic.png" width="100%">
+          </section>
+
+          <section>
+            <h3>Agent based modelling</h3>
+            <img src="images/abm-journeys.png" width="100%">
+          </section>
+
+          <section>
+            <h3>Cellular Automata (CA)</h3>
+            <img src="images/ca-london.png" width="50%">
+            <img src="images/ca-methodology.png" width="70%">
+          </section>
+
+          <section>
+            <h3>CA - Road degradation</h3>
+            <video  width="80%" controls loop>
+	      <source src="media/ca.webm" type="video/webm">
+	  	Your browser does not support the video tag.
+	    </video>
+          </section>
+
+          <section>
+            <h3>CA - Road degradation</h3>
+            <img src="images/ca-traffic-degradation.png" width="70%">
+          </section>
+
+          <section>
+            <h3>CA - Road degradation</h3>
+            <img src="images/ca-years.png" width="50%">
+          </section>
+        </section>
+
+
+        <!-- Visualisation -->
+        <section>
+          <section data-background="images/london-journeys.png" data-background-size="80%">
+            <h2 style="color: white;">Big Data visualisation</h2>
+          </section>
+          <section>
+            <h3>Tile based visualisation</h3>
+          </section>
+          <section data-background-video="media/sc-old.webm" data-background-color="#000000"></section>
+          <section>
+            <h3>WebGL - GLSL (Shading language)</h3>
+            <img src="images/glsl.png" width="50%">
+            <br/>
+            <p>
+              <a href="http://acko.net/files/gltalks/pixelfactory/online.html#42">GLSL - MathBox</a>
+              <a href="http://webglplayground.net/?gallery=fluid-simulation">WebGL</a>
+            </p>
+          </section>
+
+          <section>
+            <h3>GPU</h3>
+            <img src="images/gpu.png" width="80%">
+          </section>
+
+          <section>
+            <h3>Super computing</h3>
+            <img src="images/super-computer.png" width="80%">
+          </section>
+
+          <section>
+            <h3>Alien Isolation</h3>
+            <img src="images/alien.png" width="80%">
+          </section>
+          <section data-background-video="media/sc.webm" data-background-color="#000000"></section>
+        </section>
+
+        <!-- Thank you! -->
+        <section data-background="images/ut.jpg" data-background-size="100%">
+          <h1><br/>Thank you! <br/> and <br/> Hook 'em!</h1>
+        </section>
+        <!-- Special thanks to Chitra atthai! -->
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+      history: true,
+      slideNumber: 'c/t',
+      // More info https://github.com/hakimel/reveal.js#dependencies
+      dependencies: [{
+      src: 'plugin/markdown/marked.js'
+      }, {
+      src: 'plugin/markdown/markdown.js'
+      }, {
+      src: 'plugin/notes/notes.js',
+      async: true
+      }, {
+      src: 'plugin/highlight/highlight.js',
+      async: true,
+      callback: function() {
+      hljs.initHighlightingOnLoad();
+      }
+      }]
+      });
+    </script>
+  </body>
+
+</html>
