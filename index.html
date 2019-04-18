@@ -220,24 +220,6 @@
           </section>
 
           <section>
-            <h3>Geospatial conflation</h3>
-            <img src="images/geospatial-difference-google-itn.png" width="80%">
-            <p>Geospatial differences: Google (dark blue) versus ITN (light blue).
-              Google use epsg:4326 and the ITN uses epsg:27700</p>
-          </section>
-          <!--
-           The journey time and encoded polyline are harvested from each response. The raw polyline,
-           consisting of a series of coordinates is compressed using a lossy compression algorithm
-           producing a single string representation (Google (2017)). To decrease space even more, Google
-           offset from the previous point, rather than constructing from scratch. This must be considered
-           when individually assessing an individual polyline from a given Google result.
-           1. Inherit previous point if not first polyline in route
-           2. Decode polyline
-           3. Re-project points within polyline
-           4. Output polyline and associated journey time
-           -->
-
-          <section>
             <h3>Agent based modelling (ABM)</h3>
             <h4>Graph data structure</h4>
             <img src="images/graph-data-abm.png" width="100%">
@@ -257,6 +239,24 @@
             <h3>London graph network: Edge weights</h3>
             <img src="images/london-road-graph-micro.png" width="100%">
           </section>
+
+          <section>
+            <h3>Geospatial conflation</h3>
+            <img src="images/geospatial-difference-google-itn.png" width="80%">
+            <p>Geospatial differences: Google (dark blue) versus ITN (light blue).
+              Google use epsg:4326 and the ITN uses epsg:27700</p>
+          </section>
+          <!--
+           The journey time and encoded polyline are harvested from each response. The raw polyline,
+           consisting of a series of coordinates is compressed using a lossy compression algorithm
+           producing a single string representation (Google (2017)). To decrease space even more, Google
+           offset from the previous point, rather than constructing from scratch. This must be considered
+           when individually assessing an individual polyline from a given Google result.
+           1. Inherit previous point if not first polyline in route
+           2. Decode polyline
+           3. Re-project points within polyline
+           4. Output polyline and associated journey time
+           -->
 
           <section>
             <h3>ABM time step</h3>
@@ -294,6 +294,17 @@
               </ul>
               <img src="images/spark.png" width="80%">
             </div>
+          </section>
+
+          <section>
+            <h3>ABM hadoop map-reduce</h3>
+            <img src="images/hdfs-map-reduce.png" width="100%">
+          </section>
+
+          <section>
+            <h3>Spark RDD</h3>
+            <img src="images/rdd.png" width="60%">
+            <p>The resilient distributed dataset (RDD) is an immutable, fault-tolerant distributed collection of objects that can be operated on in parallel. RDDs are divided into smaller chunks called Partitions, and when you execute some action, a task is launched per partition. </p>
           </section>
 
           <section>
@@ -335,6 +346,26 @@
               </ul>
             </div>
           </section>
+          
+          <section>
+            <h3>Agent based modelling (ABM)</h3>
+            <img src="images/abm-traffic.png" width="100%">
+          </section>
+
+          <section>
+            <h3>Agent based modelling</h3>
+            <img src="images/abm-journeys.png" width="100%">
+          </section>
+
+          <section>
+            <h3>ABM: London PDF jouney distance</h3>
+            <img src="images/pdf-journey-distance.png" width="100%">
+          </section>
+
+          <section>
+            <h3>ABM: London PDF jouney time</h3>
+            <img src="images/pdf-journey-time.png" width="100%">
+          </section>
 
           <section>
             <h3>Computational performance</h3>
@@ -359,33 +390,11 @@
             <h3>Computational performance: Shortest path</h3>
             <img src="images/shortest-path-time.png" width="100%">
           </section>
-
-          <section>
-            <h3>Agent based modelling (ABM)</h3>
-            <img src="images/abm-traffic.png" width="100%">
-          </section>
-
-          <section>
-            <h3>Agent based modelling (ABM)</h3>
-            <img src="images/abm-traffic.png" width="100%">
-          </section>
-
-          <section>
-            <h3>Agent based modelling</h3>
-            <img src="images/abm-journeys.png" width="100%">
-          </section>
-
-          <section>
-            <h3>ABM: London PDF jouney distance</h3>
-            <img src="images/pdf-journey-distance.png" width="100%">
-          </section>
-
-          <section>
-            <h3>ABM: London PDF jouney time</h3>
-            <img src="images/pdf-journey-time.png" width="100%">
-          </section>
         </section>
 
+        <!-- Scaling Dijkstra -->
+        <section>
+        </section>
 
         <!-- Visualisation -->
         <section>
