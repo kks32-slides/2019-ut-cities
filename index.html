@@ -219,6 +219,62 @@
             </div>
           </section>
 
+          <section>
+            <h3>Geospatial conflation</h3>
+            <img src="images/geospatial-difference-google-itn.png" width="80%">
+            <p>Geospatial differences: Google (dark blue) versus ITN (light blue).
+              Google use epsg:4326 and the ITN uses epsg:27700</p>
+          </section>
+          <!--
+           The journey time and encoded polyline are harvested from each response. The raw polyline,
+           consisting of a series of coordinates is compressed using a lossy compression algorithm
+           producing a single string representation (Google (2017)). To decrease space even more, Google
+           offset from the previous point, rather than constructing from scratch. This must be considered
+           when individually assessing an individual polyline from a given Google result.
+           1. Inherit previous point if not first polyline in route
+           2. Decode polyline
+           3. Re-project points within polyline
+           4. Output polyline and associated journey time
+           -->
+
+          <section>
+            <h3>Agent based modelling (ABM)</h3>
+            <h4>Graph data structure</h4>
+            <img src="images/graph-data-abm.png" width="100%">
+          </section>
+          
+          <section>
+            <h3>London graph network: Macroscopic view</h3>
+            <img src="images/london-road-graph-macro.png" width="100%">
+          </section>
+
+          <section>
+            <h3>London graph network: Microscopic view</h3>
+            <img src="images/london-road-graph-micro.png" width="100%">
+          </section>
+
+          <section>
+            <h3>London graph network: Edge weights</h3>
+            <img src="images/london-road-graph-micro.png" width="100%">
+          </section>
+
+          <section>
+            <h3>ABM time step</h3>
+            <img src="images/graph-data-abm-timestep.png" width="100%">
+          </section>
+
+          <section>
+            <h3>Spatial v Temporal complexity</h3>
+            <div style="float: left; width: 47%">
+              <h4>Spatial</h4>
+              <img src="images/spatial-complexity.png" width="80%">
+            </div>
+            <div style="float: right; width: 47%">
+              <h4>Temporal</h4>
+              <img src="images/temporal-complexity.png" width="80%">
+            </div>
+          </section>
+
           <!-- MapReduce v Inmemory -->
           <section>
             <h3>MapReduce v In-memory</h3>
@@ -241,30 +297,7 @@
           </section>
 
           <section>
-            <h3>Agent based modelling (ABM)</h3>
-            <h4>Graph data structure</h4>
-            <img src="images/graph-data-abm.png" width="100%">
-          </section>
-
-          <section>
-            <h3>ABM time step</h3>
-            <img src="images/graph-data-abm-timestep.png" width="100%">
-          </section>
-
-          <section>
-            <h3>Spatial v Temporal complexity</h3>
-            <div style="float: left; width: 47%">
-              <h4>Spatial</h4>
-              <img src="images/spatial-complexity.png" width="80%">
-            </div>
-            <div style="float: right; width: 47%">
-              <h4>Temporal</h4>
-              <img src="images/temporal-complexity.png" width="80%">
-            </div>
-          </section>
-
-          <section>
-            <h3>ABM Architecture</h3>
+            <h3>ABM system architecture</h3>
             <img src="images/abm-architecture.png" width="70%">
             <ul>
               <li>Decentralised data structures</li>
@@ -272,7 +305,22 @@
               <li>~1.5 GB (.gml) to 43 MB (.json.gz)</li>
             </ul>
           </section>
-          
+
+          <section>
+            <h3>ABM hadoop architecture</h3>
+            <img src="images/abm-system-architecture.png" width="100%">
+          </section>
+
+          <section>
+            <h3>Agent based modelling (ABM) simulations with LSOA</h3>
+            <img src="images/lsoa-simulation.png" width="100%">
+          </section>
+
+          <section>
+            <h3>ABM simulations with LSOA and Page Rank</h3>
+            <img src="images/page-rank-public-transport.png" width="100%">
+          </section>
+
           <section>
             <h3>Dynamic computations</h3>
             <div style="float: left; width: 60%">
@@ -283,11 +331,40 @@
                 <li>Shortest path at time <i>'t'</i></li>
                 <li>Shortest path considering emissions</li>
                 <li>Shortest path re-computation in response to an event</li>
-                <li>1 million agents in ~ 5 minutes</li>
+                <li>1 million agents in ~1 hour</li>
               </ul>
             </div>
           </section>
+
+          <section>
+            <h3>Computational performance</h3>
+            <p>HDInsight Spark Cluster.
+              <ul>
+                <li>6 nodes, where there were two head node D12v2
+                  with 8 cores and 4 worker nodes D13v2 with 32 cores.</li>
+                <li>St Pancras, London City Airport and Heathrow Airport (4835 origins and 3 destinations) hub</li>
+                <li>run over 5 time slices, from 9am to 1pm and thus a total of 34 million agents were simulated.</li>
+                <li>significant time saving, from over 2 hours on a single node to around 15
+                  minutes on the 6 node cluster.</li>
+              </ul>
+              <img src="images/computation-time.png" width="70%">
+          </section>
           
+          <section>
+            <h3>Computational performance</h3>
+            <img src="images/computational-time-performance.png" width="100%">
+          </section>
+
+          <section>
+            <h3>Computational performance: Shortest path</h3>
+            <img src="images/shortest-path-time.png" width="100%">
+          </section>
+
+          <section>
+            <h3>Agent based modelling (ABM)</h3>
+            <img src="images/abm-traffic.png" width="100%">
+          </section>
+
           <section>
             <h3>Agent based modelling (ABM)</h3>
             <img src="images/abm-traffic.png" width="100%">
@@ -299,22 +376,13 @@
           </section>
 
           <section>
-            <h3>Cellular Automata (CA)</h3>
-            <img src="images/ca-london.png" width="50%">
-            <img src="images/ca-methodology.png" width="70%">
+            <h3>ABM: London PDF jouney distance</h3>
+            <img src="images/pdf-journey-distance.png" width="100%">
           </section>
 
           <section>
-            <h3>CA - Road degradation</h3>
-            <video  width="80%" controls loop>
-	      <source src="media/ca.webm" type="video/webm">
-	  	Your browser does not support the video tag.
-	    </video>
-          </section>
-
-          <section>
-            <h3>CA - Road degradation</h3>
-            <img src="images/ca-traffic-degradation.png" width="70%">
+            <h3>ABM: London PDF jouney time</h3>
+            <img src="images/pdf-journey-time.png" width="100%">
           </section>
         </section>
 
@@ -353,6 +421,15 @@
             <img src="images/alien.png" width="80%">
           </section>
           <section data-background-video="media/sc.webm" data-background-color="#000000"></section>
+
+          <!-- simulation -->
+          <section>
+            <h2>Tokyo ABM: Deck.gl</h2>
+            <video  width="100%" autoplay controls loop>
+              <source src="media/tokyo-abm.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+          </section>
         </section>
 
         <!-- Thank you! -->
